@@ -1,0 +1,26 @@
+/* TODO delete comments */
+/* Cascading Style Sheets */
+/* Processing starts at the top and goes over every line, when multiple lines update the same field ie. 
+h1 the last one is leading */
+
+body {
+    font-family: Arial;
+    background-color: #ADB6AE;
+    color: rgb(7, 3, 3);
+}
+
+h1,h3 {
+    color: rgb(201, 193, 183);
+    background-color:#828E7A;
+    text-align: center;
+    font-family: fancy;
+    padding: 10px;
+    border: 10px #434443 solid;
+    border-radius: 20px;
+}
+
+h1:hover {
+    background-color: #8C96A6;
+}
+
+/* Dit is commentaar */
