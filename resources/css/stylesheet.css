@@ -26,7 +26,7 @@ body {
 
 /* nav bar specific styling */
 
-nav {
+.header-navbar {
     position: fixed;
     /* padding: 10px; */
     top: 0;
@@ -37,19 +37,19 @@ nav {
     background-color: #BBDEFB;
 }
 
-nav h1 {
+.navbar-title {
     padding: 10px;
     border: 5px #90CAF9 solid;
     width: 100%;
     max-width: 80vw;
-    margin: 0 auto;
+    margin: 10px auto;
     border-radius: 20px;
     background-color:#BBDEFB;
     display: block;
     box-sizing: border-box; /* tells browser to account for margin and padding, not to exceed width of screen*/
 }
 
-nav h1:hover {
+.navbar-title:hover {
     background-color: #64B5F6;
     color: #E3F2FD;
 }
@@ -92,11 +92,21 @@ nav h1:hover {
     font-weight: lighter;
 }
 
+/* footer specific */
+
 footer {
     margin-top: 40px;
     text-align: center;
     font-size: small;
     padding-top: 20px;
+}
+
+footer address {
+    font-size: smaller;
+}
+
+footer a:hover {
+    text-decoration: underline;
 }
 
 
