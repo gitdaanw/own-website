@@ -16,7 +16,9 @@ h1 the last one is leading */
  #0D47A1
  */
 
-body {
+/* Global */
+
+ body {
     font-family: Arial, sans-serif;
     background-color: #E3F2FD;
     color: #1565C0;
@@ -24,17 +26,38 @@ body {
     padding-top: calc(60px + 60px);
 }
 
+a {
+    color: #0D47A1;
+    text-decoration: none;
+    font-weight: bolder;
+    margin: 1px;
+}
+
+a:not(.navbar-title-link):visited {
+    text-decoration: none;
+    color: #1565C0;
+}
+
+a:not(.navbar-title-link):hover {
+    text-decoration: underline;
+    color: #42A5F5;
+    opacity: 0.5; /* gives link a little transparancy */
+}
+
 /* nav bar specific styling */
 
 .header-navbar {
     position: fixed;
-    /* padding: 10px; */
     top: 0;
     left: 0;
     width: 100vw;
     z-index: 1000;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-color: #BBDEFB;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .navbar-title {
@@ -45,7 +68,9 @@ body {
     margin: 10px auto;
     border-radius: 20px;
     background-color:#BBDEFB;
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     box-sizing: border-box; /* tells browser to account for margin and padding, not to exceed width of screen*/
 }
 
@@ -54,10 +79,51 @@ body {
     color: #E3F2FD;
 }
 
+.navbar-logo img {
+    height: 50px;
+    width: auto;
+    display: block;
+}
+
+.navbar-title-link {
+    text-decoration: none;
+    margin-left: 10px; /* Space between logo and title */
+}
+
+.navbar-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.navbar-links {
+    margin: 10px;
+}
+
+@media (max-width: 768px) {
+    .header-navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .navbar-logo img {
+        height: 40px;
+    }
+
+    .navbar-title-link {
+        margin-left: 0;
+    }
+
+    .header-navbar a {
+        margin: 5px 0;
+    }
+}
+
+
 /* main body styling */
 
 .main-media img {
-    width: 80%;
+    width: 90%;
     max-width: 1800px;
     height: auto;
     display: block; 
@@ -95,19 +161,35 @@ body {
 /* footer specific */
 
 footer {
+    margin: 5px auto;
     margin-top: 40px;
+    max-width: 80vw;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
-    font-size: small;
+    /* font-size: small; */
     padding-top: 20px;
+    background-color: #BBDEFB;
 }
 
-footer address {
-    font-size: smaller;
+footer .subheader {
+    margin: 10px;
+    font-weight: bolder;
+    color: #0D47A1;
 }
 
-footer a:hover {
-    text-decoration: underline;
+.legal {
+    font-size: x-small;
 }
+
+/* footer nav {
+    margin: 10px;
+    text-decoration: none;
+    text-decoration-thickness: initial;
+}
+
+footer nav:hover {
+    font-weight: bolder;
+} */
 
 
 
