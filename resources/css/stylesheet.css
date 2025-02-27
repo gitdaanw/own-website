@@ -61,6 +61,8 @@ a:not(.navbar-title-link):hover {
 }
 
 .navbar-title {
+    font-size: 1.8rem;
+    font-weight: bold;
     padding: 10px;
     border: 5px #90CAF9 solid;
     width: 100%;
@@ -86,14 +88,7 @@ a:not(.navbar-title-link):hover {
 }
 
 .navbar-title-link {
-    text-decoration: none;
     margin-left: 10px; /* Space between logo and title */
-}
-
-.navbar-title {
-    font-size: 1.8rem;
-    font-weight: bold;
-    margin: 0;
 }
 
 .navbar-links {
@@ -102,20 +97,69 @@ a:not(.navbar-title-link):hover {
 
 @media (max-width: 768px) {
     .header-navbar {
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: space-between;
         text-align: center;
+        padding: 5px 10px; /* Reduce navbar padding */
+        height: 50px; /* Allow it to shrink */
     }
 
     .navbar-logo img {
-        height: 40px;
+        height: 30px; /* Make the logo smaller */
+    }
+
+    .navbar-title {
+        font-size: 1rem; /* Make title smaller */
+        margin: 0; /* Reduce space */
+        padding: 0; /* Reduce title padding */
     }
 
     .navbar-title-link {
-        margin-left: 0;
+        font-size: 1rem;
+        padding: 0;
+    }
+
+    .navbar-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 50px; /* Adjust to match navbar height */
+        right: 0;
+        width: 100%;
+        background-color: #BBDEFB;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-links a {
+        padding: 10px;
+        display: block;
+    }
+
+    /* Show menu when active */
+    .navbar-links.active {
+        display: flex;
     }
 
     .header-navbar a {
-        margin: 5px 0;
+        margin: 0;
+        padding: 5px;
+    }
+
+    .navbar-hamburger-menu {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        padding: 10px;
+        color: #0D47A1;
+    }
+}
+
+@media (min-width: 769px) {
+    .navbar-hamburger-menu {
+        display: none;
     }
 }
 
@@ -158,6 +202,11 @@ a:not(.navbar-title-link):hover {
     font-weight: lighter;
 }
 
+.main-media .aboutme-body-image {
+    width: 50%;
+    height: auto;
+}
+
 /* footer specific */
 
 footer {
@@ -180,18 +229,5 @@ footer .subheader {
 .legal {
     font-size: x-small;
 }
-
-/* footer nav {
-    margin: 10px;
-    text-decoration: none;
-    text-decoration-thickness: initial;
-}
-
-footer nav:hover {
-    font-weight: bolder;
-} */
-
-
-
 
 /* Dit is commentaar */

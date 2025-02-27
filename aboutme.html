@@ -3,6 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Styling -->
+    <link rel="stylesheet" href="/resources/css/stylesheet.css">
+
     <title>About Me</title>
 
     <!-- favicon -->
@@ -11,18 +17,22 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/resources/media/images/favicon/dw-logo-favicon-16x16.png">
     <link rel="manifest" href="/resources/media/images/favicon/site.webmanifest">
     <link rel="icon" href="/resources/media/images/favicon/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="/resources/css/stylesheet.css">
+    
 
     <!-- JS -->
      <!-- Load header and footer through JS -->
      <script src="/resources/js/dynamic-added-elements.js" defer></script>   <!-- defer causes browser to execute script after HTML -->
+
+     <!-- hamburgermenu navbar -->
+     <script src="/resources/js/navbar.js" defer></script>
+
 </head>
 
 <body>
     <div id="header"></div> <!-- Add header dynamically -->
 
-    <article>
-        <img src="/resources/media/images/logo.png" alt="Logo using initials of Daan Weerheim">
+    <section class="main-media">
+        <img  class="aboutme-body-image" src="/resources/media/images/logo.png" alt="Logo using initials of Daan Weerheim">
         <h2>“Life is too short to say no to cake” -Unknown</h2>
 
     
@@ -42,7 +52,7 @@
         <p>Section 2 content here: This website is used to try out different things, play around and have fun.</p>
         </section>
 
-    </article>
+    </section>
 
     <div id="footer"></div>  <!-- Add footer dynamically -->
 
