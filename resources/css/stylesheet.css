@@ -223,7 +223,6 @@ a:not(.navbar-title-link):hover {
     position: relative;
     width: 100%;
     max-width: 800px;
-    aspect-ratio: 21 / 9;
     margin: auto;
 }
 
@@ -231,6 +230,14 @@ a:not(.navbar-title-link):hover {
     width: 770px;
     height: 433px;
     border: none;
+}
+
+@media (max-width: 800px) {
+    .video-container iframe {
+        width: 100%; /* Full width of the container */
+        height: auto; /* Maintain aspect ratio */
+        aspect-ratio: 16 / 9; /* Adjust as needed */
+    }
 }
 
 
