@@ -219,11 +219,19 @@ a:not(.navbar-title-link):hover {
     font-size: larger;
 }
 
-.about-me-body iframe {
-    width: 80%;
-    border:none;
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    aspect-ratio: 21 / 9;
+    margin: auto;
 }
 
+.video-container iframe {
+    width: 770px;
+    height: 433px;
+    border: none;
+}
 
 
 /* footer specific */
