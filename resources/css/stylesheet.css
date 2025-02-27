@@ -202,7 +202,7 @@ a:not(.navbar-title-link):hover {
     font-weight: lighter;
 }
 
-.main-media .aboutme-body-image {
+.aboutme-body-image {
     width: 50%;
     height: auto;
 }
