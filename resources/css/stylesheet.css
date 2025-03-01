@@ -58,6 +58,8 @@ a:not(.navbar-title-link):hover {
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    font-size: larger;
+    font-weight: bolder;
 }
 
 .navbar-title {
