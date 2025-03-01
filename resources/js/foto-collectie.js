@@ -16,7 +16,10 @@ document.addEventListener("DOMContentLoaded", function () {
         try {
             const response = await fetch("resources/media/picture_collection.json");
             collectionData = await response.json();
+            
+            sortCollection("date", "asc");
             renderCollection();            
+        
         } catch (error) {
             console.error("Error fetching collection data: ", error);
         }
@@ -38,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <img src="${item.image}" alt="${item.description_en}" class="photo-thumbnail" data-full="${item.image}">
                 <div class="photo-info">
                     <p class="photo-label">Date: <span>${item.date}</span></p>
-                    <p class="photo-label">Country: <span>${item.country}</span></p>
+                    <p class="photo-label">Country: <span>${item.country_nl}</span></p>
                     <p class="photo-label">City: <span>${item.city}</span></p>
                     <p class="photo-label">Category: <span>${item.category_nl}</span></p>
                     <p class="photo-description">${item.description_nl}</p>
@@ -74,13 +77,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // function to sort the collection using the labels
-    function sortCollection(attribute) {
+    function sortCollection(attribute, order = "asc") {
         collectionData.sort((a, b) => {
+            let result;
+            
             if (attribute === "date") {
-                return new Date(a.date) - new Date(b.date);
+                result = new Date(a.date) - new Date(b.date);
+            } else {
+                result = a[attribute].localeCompare(b[attribute]);
             }
-            return a[attribute].localeCompare(b[attribute]);
+    
+            return order === "desc" ? -result : result;
         });
+    
         currentPage = 1;
         renderCollection();
     }
@@ -88,11 +97,11 @@ document.addEventListener("DOMContentLoaded", function () {
     // Navigationcontrols functions
     function updateNavigationControls() {
         navigationContainer.innerHTML = `
-            <button id="firstPage" ${currentPage === 1 ? "disabled" : ""}>Eerste</button>
-            <button id="prevPage" ${currentPage === 1 ? "disabled" : ""}>Previous></button>
+            <button id="firstPage" ${currentPage === 1 ? "disabled" : ""}><<</button>
+            <button id="prevPage" ${currentPage === 1 ? "disabled" : ""}><</button>
             <span> Page ${currentPage} of ${Math.ceil(collectionData.length / picturesPerPage)} </span>
-            <button id="nextPage" ${currentPage * picturesPerPage >= collectionData.length ? "disabled" : ""}>Next</button>
-            <button id="lastPage" ${currentPage * picturesPerPage >= collectionData.length ? "disabled" : ""}>Laatste</button>
+            <button id="nextPage" ${currentPage * picturesPerPage >= collectionData.length ? "disabled" : ""}>></button>
+            <button id="lastPage" ${currentPage * picturesPerPage >= collectionData.length ? "disabled" : ""}>>></button>
         `;
 
         // navigationButton listeners
@@ -120,7 +129,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // event sort listener
     sortSelect.addEventListener("change", () => {
-        sortCollection(sortSelect.value);
+        const selectedOption = sortSelect.value;
+        const [attribute, order] = selectedOption.split("-");
+        sortCollection(attribute, order === "desc" ? "desc" : "asc");
     });
 
     fetchCollection();
