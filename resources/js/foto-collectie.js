@@ -2,6 +2,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const pictureContainer = document.getElementById("gallery");
     const sortSelect = document.getElementById("sort");
     const navigationContainer = document.getElementById("navigation");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    const closeBtn = document.getElementById("close-lightbox");
+    
 
     let collectionData = [];
     let currentPage = 1;
@@ -31,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
             photoCard.classList.add("photo-card");
 
             photoCard.innerHTML = `
-                <img src="${item.image}" alt="${item.description_en}">
+                <img src="${item.image}" alt="${item.description_en}" class="photo-thumbnail" data-full="${item.image}">
                 <div class="photo-info">
                     <p class="photo-label">Date: <span>${item.date}</span></p>
                     <p class="photo-label">Country: <span>${item.country}</span></p>
@@ -44,8 +48,32 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         
         updateNavigationControls();
+        addLightboxEventListeners();
+    }
+    
+    // 
+    function openLightbox(imageSrc) {
+        lightbox.style.display = "flex";
+        lightboxImg.src = imageSrc;
     }
 
+    function closeLightbox() {
+        lightbox.style.display = "none";
+    }
+
+    function addLightboxEventListeners() {
+        document.querySelectorAll(".photo-thumbnail").forEach(image => {
+            image.addEventListener("click", function () {
+                openLightbox(this.dataset.full);
+            });
+        });
+    }
+
+    closeBtn.addEventListener("click", closeLightbox);
+
+
+
+    // function to sort the collection using the labels
     function sortCollection(attribute) {
         collectionData.sort((a, b) => {
             if (attribute === "date") {
@@ -57,10 +85,11 @@ document.addEventListener("DOMContentLoaded", function () {
         renderCollection();
     }
 
+    // Navigationcontrols functions
     function updateNavigationControls() {
         navigationContainer.innerHTML = `
             <button id="firstPage" ${currentPage === 1 ? "disabled" : ""}>Eerste</button>
-            <button id="prevPage" ${currentPage === 1 ? "disabled" : ""}>Previous</button>
+            <button id="prevPage" ${currentPage === 1 ? "disabled" : ""}>Previous></button>
             <span> Page ${currentPage} of ${Math.ceil(collectionData.length / picturesPerPage)} </span>
             <button id="nextPage" ${currentPage * picturesPerPage >= collectionData.length ? "disabled" : ""}>Next</button>
             <button id="lastPage" ${currentPage * picturesPerPage >= collectionData.length ? "disabled" : ""}>Laatste</button>
@@ -73,11 +102,13 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("lastPage").addEventListener("click", () => changePage(Math.ceil(collectionData.length / picturesPerPage))); // Math.ceil 
     }
 
+    // change page function back or forward direction
     function changePageDirection(direction) {
         currentPage += direction;
         renderCollection();
     }
 
+    // change page function
     function changePage(page) {
         if (page < 1) page = 1;
         if (page > Math.ceil(collectionData.length / picturesPerPage)) page = Math.ceil(collectionData.length / picturesPerPage);
@@ -86,6 +117,8 @@ document.addEventListener("DOMContentLoaded", function () {
         renderCollection();
     }
 
+
+    // event sort listener
     sortSelect.addEventListener("change", () => {
         sortCollection(sortSelect.value);
     });
