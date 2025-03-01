@@ -61,7 +61,7 @@
     },
     {
         "image":            "resources/media/images/20220414_1210_netherlands_zoetermeer_toad_mating_season.jpg",
-        "date":             "20220414",
+        "date":             "2022-04-14",
         "country":          "Netherlands",
         "city":             "Zoetermeer",
         "category_nl":      "Dieren",
@@ -71,7 +71,7 @@
     },
     {
         "image":            "resources/media/images/20170504_1640_netherlands_bumblebee_loaded.jpg",
-        "date":             "20170504",
+        "date":             "2017-05-04",
         "country":          "Netherlands",
         "city":             "Zoetermeer",
         "category_nl":      "Dieren",
@@ -81,7 +81,7 @@
     },
     {
         "image":            "resources/media/images/20160325_1618_denmark_kopenhagen_ducks_on_the_move.jpg",
-        "date":             "20160325",
+        "date":             "2016-03-25",
         "country":          "Denmark",
         "city":             "Kopenhagen",
         "category_nl":      "Dieren",
@@ -91,7 +91,7 @@
     },
     {
         "image":            "resources/media/images/20181104_0924_thailand_khao_ngon_nak_bay_view_2.jpg",
-        "date":             "20181104",
+        "date":             "2018-11-04",
         "country":          "Thailand",
         "city":             "Khao Nogn Nak Bay",
         "category_nl":      "Natuur",
@@ -101,7 +101,7 @@
     },
     {
         "image":            "resources/media/images/20181104_1053_thailand_ants_on_the_move.jpg",
-        "date":             "20181104",
+        "date":             "2018-11-04",
         "country":          "Thailand",
         "city":             "Khao Nogn Nak Bay",
         "category_nl":      "Dieren",
@@ -111,7 +111,7 @@
     },
     {
         "image":            "resources/media/images/20181107_0950_thailand_krabi_islands.jpg",
-        "date":             "20181107",
+        "date":             "2018-11-07",
         "country":          "Thailand",
         "city":             "Krabi Islands",
         "category_nl":      "Natuur",
@@ -121,7 +121,7 @@
     },
     {
         "image":            "resources/media/images/20160326_0947_sweden_malmo_turnin_torso.jpg",
-        "date":             "20160326",
+        "date":             "2016-03-26",
         "country":          "Sweden",
         "city":             "Malmo",
         "category_nl":      "Stad",
@@ -131,7 +131,7 @@
     },
     {
         "image":            "resources/media/images/20181027_1441_thailand_chiang_mai_rice_fields.jpg",
-        "date":             "20181027",
+        "date":             "2018-10-27",
         "country":          "Thailand",
         "city":             "Chiang Mai",
         "category_nl":      "Natuur",
@@ -141,7 +141,7 @@
     },
     {
         "image":            "resources/media/images/20181028_0627_thailand_chiang_mai_sun_rise.jpg",
-        "date":             "20181028",
+        "date":             "2018-10-28",
         "country":          "Thailand",
         "city":             "Chiang Mai",
         "category_nl":      "Natuur",
@@ -151,7 +151,7 @@
     },
     {
         "image":            "resources/media/images/20190805_2053_belgium_burg_reuland_rolling_fields_by_sunset.jpg",
-        "date":             "20190805",
+        "date":             "2019-08-05",
         "country":          "Belgium",
         "city":             "Burg-Reuland",
         "category_nl":      "Natuur",
@@ -161,7 +161,7 @@
     },
     {
         "image":            "resources/media/images/20181104_082130_thailand_khao_ngon_nak_bay_view.jpg",
-        "date":             "20181104",
+        "date":             "2018-11-04",
         "country":          "Thailand",
         "city":             "Khao Nogn Nak Bay",
         "category_nl":      "Natuur",
@@ -171,7 +171,7 @@
     },
     {
         "image":            "resources/media/images/20220323_1248_austria_hallstatt_swans_at_the_lake.jpg",
-        "date":             "20220323",
+        "date":             "2022-03-23",
         "country":          "Austria",
         "city":             "Hallstatt",
         "category_nl":      "Dieren",
@@ -181,7 +181,7 @@
     },
     {
         "image":            "resources/media/images/20220512_1203_austria_hallstatt_church.jpg",
-        "date":             "20220323",
+        "date":             "2022-03-23",
         "country":          "Austria",
         "city":             "Hallstatt",
         "category_nl":      "Stad",
@@ -191,7 +191,7 @@
     },
     {
         "image":            "resources/media/images/20220603_1457_italy_rome_colosseum.jpg",
-        "date":             "20220603",
+        "date":             "2022-06-03",
         "country":          "Italy",
         "city":             "Rome",
         "category_nl":      "Stad",
@@ -201,7 +201,7 @@
     },
     {
         "image":            "resources/media/images/20220604_1909_vatican_st_peter_front.jpg",
-        "date":             "20220604",
+        "date":             "2022-06-04",
         "country":          "Vatican",
         "city":             "Vatican",
         "category_nl":      "Stad",
@@ -211,7 +211,7 @@
     },
     {
         "image":            "resources/media/images/20220608_1504_italy_gardens_royal_palace_caserta.jpg",
-        "date":             "20220608",
+        "date":             "2022-06-08",
         "country":          "Italy",
         "city":             "Napels",
         "category_nl":      "Stad",
@@ -219,4 +219,5 @@
         "description_nl":   "Foto genomen tijdens een fietstocht door de tuinen van de koninklijke tuinen bij het Palace Caserta",
         "description_en":   "Picture taken during a biketour through the Royal Gardens of Caserta. "
     }
+]
 
