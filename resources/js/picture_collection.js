@@ -1,4 +1,4 @@
-[
+const collectionData = [
     {
         "image":            "resources/media/images/20220323_1200_hallstatter_see.jpg",
         "date":             "2022-03-23",
@@ -243,3 +243,4 @@
     }
 ]
 
+export {collectionData};

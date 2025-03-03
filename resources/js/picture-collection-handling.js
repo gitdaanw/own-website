@@ -1,3 +1,5 @@
+import { collectionData } from "../js/picture_collection.js";
+
 document.addEventListener("DOMContentLoaded", function () {
     const pictureContainer = document.getElementById("gallery");
     const sortSelect = document.getElementById("sort");
@@ -9,23 +11,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const closeBtn = document.getElementById("close-lightbox");
     
 
-    let collectionData = [];
     let filteredData = [];
     let currentPage = 1;
     let picturesPerPage = 5;
 
-    // async function to collect JSON picture data
-    // fetch needs to wait for request to finish using await and therefor async
-    async function fetchCollection() {
-        try {
-            const response = await fetch("resources/media/picture_collection.json");
-            collectionData = await response.json();
-
-            populateCategoryDropdown();
-            applyFilterAndSort();
-        } catch (error) {
-            console.error("Error fetching collection data: ", error);
-        }
+    function initializeCollection() {
+        populateCategoryDropdown();
+        applyFilterAndSort();
     }
 
     // Populate category filter dropdown dynamically
@@ -208,6 +200,6 @@ document.addEventListener("DOMContentLoaded", function () {
         sortCollection(attribute, order === "desc" ? "desc" : "asc");
     });
 
-    fetchCollection();
+    initializeCollection();
 
 });
