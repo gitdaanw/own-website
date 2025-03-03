@@ -165,7 +165,6 @@ document.addEventListener("DOMContentLoaded", function () {
         currentPage = 1; // Reset to first page
         renderCollection(); // Re-render the collection
         updateNavigationControls(); // Update the navigation
-    
     }
 
     // lightbox related
