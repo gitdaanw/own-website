@@ -23,14 +23,19 @@ h1 the last one is leading */
     background-color: #E3F2FD;
     color: #1565C0;
     text-align: center;
-    padding-top: calc(60px + 60px);
+    padding-top: calc(60px + 25px);
+}
+
+h3 {
+    font-size: xx-large;
+    font-weight: bolder;
 }
 
 a {
     color: #0D47A1;
     text-decoration: none;
     font-weight: bolder;
-    margin: 1px;
+    margin: 5px;
 }
 
 a:not(.navbar-title-link):visited {
@@ -97,6 +102,10 @@ a:not(.navbar-title-link):hover {
     margin: 10px;
 }
 
+.navbar-hamburger-menu {
+    display: none;
+}
+
 /* SMALL SCREENS MOBILE */
 @media (max-width: 600px) {
     .header-navbar {
@@ -104,7 +113,6 @@ a:not(.navbar-title-link):hover {
         justify-content: space-between;
         text-align: center;
         padding: 5px 10px; /* Reduce navbar padding */
-        height: 50px; /* Allow it to shrink */
     }
 
     .navbar-logo img {
