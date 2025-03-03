@@ -24,14 +24,42 @@
      
      <!-- hamburgermenu navbar -->
      <script src="/resources/js/navbar.js" defer></script>
+
+     <!-- adding pictures -->
+     <script src="/resources/js/add-picture.js" type="module"></script>
 </head>
 
 <body>
     <!-- load header using JS -->
     <div id="header"></div>
 
-    <section class="main-media">
+    <section class="add-picture-body">
         <h2>Een foto toevoegen</h2>   
+
+        <form id="addPictureForm">
+            <label for="date">Date:</label>
+            <input type="date" id="date" value="2025-03-03" readonly>
+    
+            <label for="country_nl">Country (NL):</label>
+            <input type="text" id="country_nl" value="Nederland" readonly>
+    
+            <label for="city">City:</label>
+            <input type="text" id="city" value="Zoetermeer" readonly>
+    
+            <label for="category_nl">Category (NL):</label>
+            <input type="text" id="category_nl" value="Dieren" readonly>
+    
+            <label for="description_nl">Description (NL):</label>
+            <textarea id="description_nl" readonly>Een testbeschrijving voor een dummyfoto.</textarea>
+    
+            <!-- Dummy Image -->
+            <label for="image">Image:</label>
+            <input type="text" id="image" value="resources/media/images/dummy_picture.jpg" readonly>
+    
+            <button type="submit">Add Picture</button>
+        </form>
+
+
     </section>
     <button id="logoutBtn">Logout</button>
 

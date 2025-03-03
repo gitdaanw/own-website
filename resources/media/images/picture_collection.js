@@ -1,4 +1,4 @@
-const collectionData = [
+export let collectionData = [
     {
         "image":            "resources/media/images/20220323_1200_hallstatter_see.jpg",
         "date":             "2022-03-23",
@@ -242,5 +242,3 @@ const collectionData = [
         "description_en":   "Picture taken during a biketour through the Royal Gardens of Caserta. "
     }
 ]
-
-export {collectionData};

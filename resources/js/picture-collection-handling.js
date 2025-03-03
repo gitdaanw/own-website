@@ -16,6 +16,17 @@ document.addEventListener("DOMContentLoaded", function () {
     let picturesPerPage = 5;
 
     function initializeCollection() {
+        
+        const storedData = JSON.parse(localStorage.getItem("collectionData")) || [];
+
+        // adds manually added pictures
+        const mergedData = [...collectionData, ...storedData];
+    
+        if (storedData.length > 0) {
+            // start at index 0, delete all elements and insert new
+            collectionData.splice(0, collectionData.length, ...storedData); 
+        }
+    
         populateCategoryDropdown();
         applyFilterAndSort();
     }
@@ -76,6 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // function to render the collected data
     function renderCollection() {
+        console.log("Rendering collection... total items:", filteredData.length);
         pictureContainer.innerHTML = "";
 
         const startIndex = (currentPage - 1) * picturesPerPage;
