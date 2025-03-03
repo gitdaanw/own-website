@@ -169,7 +169,6 @@ a:not(.navbar-title-link):hover {
         flex-direction: column;
         gap: 5px; /* Reduce space between elements */
     }
-    
 }
 
 /* BIG SCREEN SPECIFIC  */

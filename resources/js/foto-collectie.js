@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
     const pictureContainer = document.getElementById("gallery");
     const sortSelect = document.getElementById("sort");
+    const categoryFilter = document.getElementById("categoryFilter");
+    const picturesPerPageFilter = document.getElementById("picturesPerPageFilter");
     const navigationContainer = document.getElementById("navigation");
     const lightbox = document.getElementById("lightbox");
     const lightboxImg = document.getElementById("lightbox-img");
@@ -8,30 +10,85 @@ document.addEventListener("DOMContentLoaded", function () {
     
 
     let collectionData = [];
+    let filteredData = [];
     let currentPage = 1;
-    const picturesPerPage = 5;
+    let picturesPerPage = 5;
 
-    // function to collect JSON picture data
+    // async function to collect JSON picture data
+    // fetch needs to wait for request to finish using await and therefor async
     async function fetchCollection() {
         try {
             const response = await fetch("resources/media/picture_collection.json");
             collectionData = await response.json();
-            
-            sortCollection("date", "asc");
-            renderCollection();            
-        
+
+            populateCategoryDropdown();
+            applyFilterAndSort();
         } catch (error) {
             console.error("Error fetching collection data: ", error);
         }
     }
 
+    // Populate category filter dropdown dynamically
+    function populateCategoryDropdown() {
+        // create an array (map) of all categories using Set to remove duplicates
+        // Add all as a category top of the list
+        // => for each item returns category_nl from json
+        const categories = ["all", ...new Set(collectionData.map(item => item.category_nl))];
+
+        categoryFilter.innerHTML = categories
+            .map(category => `<option value="${category}">${category}</option>`)
+            .join("");
+    }
+
+
+
+    // function to sort the collection using the labels
+    function sortCollection(attribute, order = "asc") {
+        // use .sort to sort the items in filteredData
+        filteredData.sort((a, b) => {
+            let result;
+            
+            // date needs different sort then strings
+            if (attribute === "date") {
+                result = new Date(a.date) - new Date(b.date);
+            } else {
+                result = a[attribute].localeCompare(b[attribute]);
+            }
+            // ? is ternary (if else) so condition desc ? expression_true : expression_false
+            return order === "desc" ? -result : result;
+        });
+    
+        currentPage = 1;
+        renderCollection();
+    }
+
+    // Function to apply filtering and sorting
+    function applyFilterAndSort() {
+        const selectedCategory = categoryFilter.value;
+        // ...collectionData creates a copy of the list, prevents me from modifying the original list
+        filteredData = selectedCategory === "all" ? [...collectionData] : collectionData.filter(item => item.category_nl === selectedCategory);
+
+        currentPage = 1;    // reset to first page when filter is applied
+
+        const selectedOption = sortSelect.value;
+        const [attribute, order] = selectedOption.split("-");
+        sortCollection(attribute, order === "desc" ? "desc" : "asc");
+
+        // Update pagination based on new filtered data
+        updateNavigationControls();
+    }
+
+    function filterCollectionByCategory(category) {
+        return category === "all" ? [...collectionData] : collectionData.filter(item => item.category_nl === category);
+    }
+
     // function to render the collected data
-    function renderCollection(data) {
+    function renderCollection() {
         pictureContainer.innerHTML = "";
 
         const startIndex = (currentPage - 1) * picturesPerPage;
         const endIndex = startIndex + picturesPerPage;
-        const paginatedData = collectionData.slice(startIndex, endIndex);
+        const paginatedData = filteredData.slice(startIndex, endIndex);
 
         paginatedData.forEach(item => {
             const photoCard = document.createElement("article");
@@ -53,8 +110,65 @@ document.addEventListener("DOMContentLoaded", function () {
         updateNavigationControls();
         addLightboxEventListeners();
     }
+
     
-    // 
+
+    // Navigationcontrols function
+    function updateNavigationControls() {
+        const totalPages = getTotalPages(); // corrects number of pages when data is filtered
+
+        // prevent index out of bounds
+        if (currentPage > totalPages) {
+            currentPage = totalPages > 0 ? totalPages : 1;
+        }
+        
+        navigationContainer.innerHTML = `
+            <button id="firstPage" ${currentPage === 1 ? "disabled" : ""}><<</button>
+            <button id="prevPage" ${currentPage === 1 ? "disabled" : ""}><</button>
+            <span> Page ${currentPage} of ${Math.ceil(filteredData.length / picturesPerPage)} </span>
+            <button id="nextPage" ${currentPage * picturesPerPage >= filteredData.length ? "disabled" : ""}>></button>
+            <button id="lastPage" ${currentPage === totalPages ? "disabled" : ""}>>></button>
+        `;
+
+        // navigationButton listeners
+        document.getElementById("prevPage").addEventListener("click", () => changePageByDirection(-1));
+        document.getElementById("nextPage").addEventListener("click", () => changePageByDirection(1));
+        document.getElementById("firstPage").addEventListener("click", () => changePage(1));
+        document.getElementById("lastPage").addEventListener("click", () => changePage(getTotalPages()));  
+    }
+
+    // change page function back or forward direction
+    function changePageByDirection(direction) {
+        const totalPages = getTotalPages();
+        
+        currentPage += direction;
+        if (currentPage < 1) currentPage = 1;
+        if (currentPage > totalPages) currentPage = totalPages > 0 ? totalPages : 1;
+
+        renderCollection();
+    }
+
+    // change page function
+    function changePage(page) {
+        const totalPages = getTotalPages();
+        if (page < 1) page = 1;
+        if (page > totalPages) page = totalPages;
+
+        currentPage = page;
+        renderCollection();
+    }
+
+    function setPicturesPerPage() {
+        const selectedValue = picturesPerPageFilter.value;
+
+        picturesPerPage = selectedValue === "all" ? filteredData.length : parseInt(selectedValue, 10);
+        currentPage = 1; // Reset to first page
+        renderCollection(); // Re-render the collection
+        updateNavigationControls(); // Update the navigation
+    
+    }
+
+    // lightbox related
     function openLightbox(imageSrc) {
         lightbox.style.display = "flex";
         lightboxImg.src = imageSrc;
@@ -72,60 +186,21 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    function getTotalPages() {
+       return Math.ceil(filteredData.length / picturesPerPage);
+    }
+
+    // lightbox listener
     closeBtn.addEventListener("click", closeLightbox);
 
+    // sort and filter listener
+    sortSelect.addEventListener("change", applyFilterAndSort);
+    categoryFilter.addEventListener("change", applyFilterAndSort);
 
-
-    // function to sort the collection using the labels
-    function sortCollection(attribute, order = "asc") {
-        collectionData.sort((a, b) => {
-            let result;
-            
-            if (attribute === "date") {
-                result = new Date(a.date) - new Date(b.date);
-            } else {
-                result = a[attribute].localeCompare(b[attribute]);
-            }
-    
-            return order === "desc" ? -result : result;
-        });
-    
-        currentPage = 1;
-        renderCollection();
-    }
-
-    // Navigationcontrols functions
-    function updateNavigationControls() {
-        navigationContainer.innerHTML = `
-            <button id="firstPage" ${currentPage === 1 ? "disabled" : ""}><<</button>
-            <button id="prevPage" ${currentPage === 1 ? "disabled" : ""}><</button>
-            <span> Page ${currentPage} of ${Math.ceil(collectionData.length / picturesPerPage)} </span>
-            <button id="nextPage" ${currentPage * picturesPerPage >= collectionData.length ? "disabled" : ""}>></button>
-            <button id="lastPage" ${currentPage * picturesPerPage >= collectionData.length ? "disabled" : ""}>>></button>
-        `;
-
-        // navigationButton listeners
-        document.getElementById("prevPage").addEventListener("click", () => changePageDirection(-1));
-        document.getElementById("nextPage").addEventListener("click", () => changePageDirection(1));
-        document.getElementById("firstPage").addEventListener("click", () => changePage(1));
-        document.getElementById("lastPage").addEventListener("click", () => changePage(Math.ceil(collectionData.length / picturesPerPage))); // Math.ceil 
-    }
-
-    // change page function back or forward direction
-    function changePageDirection(direction) {
-        currentPage += direction;
-        renderCollection();
-    }
-
-    // change page function
-    function changePage(page) {
-        if (page < 1) page = 1;
-        if (page > Math.ceil(collectionData.length / picturesPerPage)) page = Math.ceil(collectionData.length / picturesPerPage);
-
-        currentPage = page;
-        renderCollection();
-    }
-
+    // pictures per page listener
+    picturesPerPageFilter.addEventListener("change", function () {
+        setPicturesPerPage();
+    });
 
     // event sort listener
     sortSelect.addEventListener("change", () => {
