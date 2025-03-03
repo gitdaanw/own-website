@@ -37,9 +37,10 @@
     <div id="header"></div>
 
     <section class="add-picture-body">
-        <h2>Een foto toevoegen</h2>   
+        <h2>Een foto toevoegen - Dummy only</h2>   
 
         <form id="addPictureForm">
+            <h3>Enkel als demo, velden niet aanpasbaar</h3>
             <label for="date">Date:</label>
             <input type="date" id="date" value="2025-03-03" readonly>
     
@@ -58,31 +59,12 @@
             <!-- Dummy Image -->
             <label for="image">Image:</label>
             <input type="text" id="image" value="resources/media/images/dummy_picture.jpg" readonly>
-    
-            <button type="submit">Add Picture</button>
         </form>
-
-
+        
+        <button type="submit">Add Picture</button>
     </section>
-    <button id="logoutBtn">Logout</button>
 
     <!-- load footer using JS -->
     <div id="footer"></div>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const loggedInUser = localStorage.getItem("loggedInUser");
-
-            if (!loggedInUser) {
-                window.location.href = "index.html"; // Redirect if not logged in
-            }
-
-            document.getElementById("logoutBtn").addEventListener("click", function () {
-                localStorage.removeItem("loggedInUser"); // Clear login state
-                window.location.href = "index.html";
-            });
-        });
-    </script>
-
 </body>
 </html>

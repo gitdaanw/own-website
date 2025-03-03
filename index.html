@@ -24,6 +24,9 @@
      
      <!-- hamburgermenu navbar -->
      <script src="/resources/js/navbar.js" defer></script>
+
+     <!-- slideshow -->
+     <script src="/resources/js/slideshow.js" type="module"></script>
 </head>
 
 <body>
@@ -31,11 +34,14 @@
     <div id="header"></div>
 
     <section class="main-media">
-        <h2>Random Selected Media</h2>
-        <img src="/resources/media/images/20220323_1200_hallstatter_see.jpg" alt="Foto genomen op 22-02-2023, Hallstatter See - Oostenrijk">
+        <h3>Welkom!</h3>
+        <img id ="slideshowImage" 
+            src="/resources/media/images/20220323_1200_hallstatter_see.jpg" 
+            alt="Foto genomen op 22-02-2023, Hallstatter See - Oostenrijk"
+            style="cursor: pointer;">
         <fieldset>
             <legend>Picture Details</legend>
-            <article>The above picture is made in Austria, at the hallstatter-see, this is also known for being the inspiration of the Frozen movies</article>
+            <article id="slideshowDescription">The above picture is made in Austria, at the hallstatter-see, this is also known for being the inspiration of the Frozen movies</article>
         </fieldset>    
     </section>
 

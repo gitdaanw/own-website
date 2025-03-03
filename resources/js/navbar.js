@@ -1,20 +1,15 @@
 function updateNavbar() {
     const navbarLinksContainer = document.querySelector(".navbar-links");
-
-    if (!navbarLinksContainer) {
-        console.error("Navbar container not found. Ensure `header.html` is loaded before `navbar.js`.");
-        return;
-    }
-
+    const homeLink = `<a href="/index.html">Home</a>`;
+    const aboutMeLink = `<a href="/aboutme.html">Over Mij</a>`;
+    const picturesLink = `<a href="/pictures.html">Foto's</a>`;
     const loggedInUser = localStorage.getItem("loggedInUser");
 
     // clear existing links before adding new ones prevents null error
     navbarLinksContainer.innerHTML = "";
 
     // common non protected links
-    const homeLink = `<a href="/index.html">Home</a>`;
-    const aboutMeLink = `<a href="/aboutme.html">Over Mij</a>`;
-    const picturesLink = `<a href="/pictures.html">Foto's</a>`;
+    
 
     // show links when logged in
     let authLink;
@@ -24,7 +19,7 @@ function updateNavbar() {
             <a href="#" id="logoutLink">Uitloggen</a>
         `;
     } else {
-        authLink = `<a href="/login.html">Inloggen</a>`;
+        authLink = `<a href="/login.html">Inloggen</a>`;    // if not logged in it shows inloggen
     }
 
     // inject links into navbar
@@ -33,13 +28,12 @@ function updateNavbar() {
     // log out functionality
     if (loggedInUser) {
         document.getElementById("logoutLink").addEventListener("click", function () {
+            alert("Uitloggen succesvol!");
             localStorage.removeItem("loggedInUser");
             window.location.href = "/index.html";
         });
     }
 }
-
-
 
 function toggleMenu() {
     const menu = document.querySelector('.navbar-links');

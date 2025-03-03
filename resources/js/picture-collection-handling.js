@@ -115,8 +115,6 @@ document.addEventListener("DOMContentLoaded", function () {
         addLightboxEventListeners();
     }
 
-    
-
     // Navigationcontrols function
     function updateNavigationControls() {
         const totalPages = getTotalPages(); // corrects number of pages when data is filtered

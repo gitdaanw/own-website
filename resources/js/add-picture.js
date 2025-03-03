@@ -1,20 +1,18 @@
-import { collectionData } from "../media/images/picture_collection.js";
-
 document.addEventListener("DOMContentLoaded", function () {
     const loggedInUser = localStorage.getItem("loggedInUser");
+    const addPictureForm = document.getElementById("addPictureForm");
+    const submitButton = document.querySelector("button[type='submit']");
 
     if (!loggedInUser) {
-        window.location.href = "index.html"; // Redirect if not logged in
+        window.location.href = "index.html"; // redirect if not logged in
     }
 
-    document.getElementById("logoutBtn").addEventListener("click", function () {
-        localStorage.removeItem("loggedInUser"); // clear login state
-        window.location.href = "index.html";
+    // submit button listener
+    submitButton.addEventListener("click", function () {
+        addPictureForm.dispatchEvent(new Event("submit", { cancelable: true }));
     });
 
-    // handle adding a picture
-    const addPictureForm = document.getElementById("addPictureForm");
-
+    // form listener, needed to handle data and prevent refresh
     addPictureForm.addEventListener("submit", function (event) {
         event.preventDefault(); // Prevent page refresh
 
@@ -33,15 +31,15 @@ document.addEventListener("DOMContentLoaded", function () {
             description_en: document.getElementById("description_nl").value 
         };
 
-        // Add new picture to the collection
+        // add new picture to the collection
         storedData.push(newPicture);
         
-        // Save to local storage, this is only usable in dome as it is tempstorage
+        // save to local storage, this is only usable in demo as it is tempstorage
         localStorage.setItem("collectionData", JSON.stringify(storedData));
 
         alert("Picture added successfully!");
 
-        // Redirect to gallery page
+        // redirect to gallery page
         window.location.href = "pictures.html";
     });
 });

@@ -20,7 +20,8 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem("loggedInUser", username);
             window.location.href= "add-pictures.html";
         } else {
-            errorMessage.classList.remove("hidden"); // removing hidden shows the error
+            alert("Gebruikersnaam of password klopt niet");
+            window.location.href = "login.html";
         }
     });
 });
