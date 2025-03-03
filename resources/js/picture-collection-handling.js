@@ -1,4 +1,4 @@
-import { collectionData } from "../js/picture_collection.js";
+import { collectionData } from "../media/images/picture_collection.js";
 
 document.addEventListener("DOMContentLoaded", function () {
     const pictureContainer = document.getElementById("gallery");
