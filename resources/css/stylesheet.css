@@ -447,6 +447,10 @@ footer .legal {
     opacity: 0.8;
 }
 
+footer a {
+    text-decoration: underline;
+}
+
 /* SMALL SCREENS MOBILE */
 @media (max-width: 870px) {
     body {

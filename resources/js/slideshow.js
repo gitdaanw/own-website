@@ -18,7 +18,8 @@ document.addEventListener("DOMContentLoaded", function () {
     function updateSlideshow() {
         slideshowImage.src = collectionData[currentIndex].image;
         slideshowDescription.textContent = collectionData[currentIndex].description_nl;
-
+        
+        // use opacity and css styling to create a ease in
         slideshowImage.style.opacity = "1";
     }
 
