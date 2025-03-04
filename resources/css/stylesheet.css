@@ -164,6 +164,7 @@ a:not(.navbar-title-link):hover {
     margin: 10px auto;
     padding: 10px;
     display: block;
+    margin: 60px auto 0 auto;
 }
 
 .about-me-body q {

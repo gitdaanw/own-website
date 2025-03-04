@@ -16,21 +16,14 @@ document.addEventListener("DOMContentLoaded", function () {
     let picturesPerPage = 5;
 
     function initializeCollection() {
-        
         const storedData = JSON.parse(localStorage.getItem("collectionData")) || [];
-
-        // adds manually added pictures
-        const mergedData = [...collectionData, ...storedData];
     
-        if (storedData.length > 0) {
-            // start at index 0, delete all elements and insert new
-            collectionData.splice(0, collectionData.length, ...storedData); 
-        }
+        // Merge storedData into collectionData without reassigning
+        collectionData.push(...storedData);
     
         populateCategoryDropdown();
         applyFilterAndSort();
     }
-
     // Populate category filter dropdown dynamically
     function populateCategoryDropdown() {
         // create an array (map) of all categories using Set to remove duplicates
