@@ -8,9 +8,6 @@ function updateNavbar() {
     // clear existing links before adding new ones prevents null error
     navbarLinksContainer.innerHTML = "";
 
-    // common non protected links
-    
-
     // show links when logged in
     let authLink;
     if (loggedInUser) {

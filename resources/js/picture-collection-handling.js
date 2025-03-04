@@ -36,8 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
             .join("");
     }
 
-
-
     // function to sort the collection using the labels
     function sortCollection(attribute, order = "asc") {
         // use .sort to sort the items in filteredData
@@ -91,6 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const photoCard = document.createElement("article");
             photoCard.classList.add("photo-card");
 
+            // photoCard layout and dynamic elements from collection
             photoCard.innerHTML = `
                 <img src="${item.image}" alt="${item.description_en}" class="photo-thumbnail" data-full="${item.image}">
                 <div class="photo-info">
@@ -117,6 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
             currentPage = totalPages > 0 ? totalPages : 1;
         }
         
+        // navigation buttons
         navigationContainer.innerHTML = `
             <button id="firstPage" ${currentPage === 1 ? "disabled" : ""}><<</button>
             <button id="prevPage" ${currentPage === 1 ? "disabled" : ""}><</button>

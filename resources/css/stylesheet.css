@@ -108,11 +108,13 @@ a:not(.navbar-title-link):hover {
     width: 90%;
     max-width: 1800px;
     height: auto;
+    max-height: 60vh;
     display: block; 
     border-radius: 10px; 
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
     margin: 10px auto;
     padding: 10px;
+    object-fit: contain;
 }
 
 .main-media fieldset {
@@ -154,6 +156,12 @@ a:not(.navbar-title-link):hover {
     margin: 10px auto;
     padding: 10px;
     font-weight: lighter;
+}
+
+#slideshowImage {
+    cursor: pointer;
+    opacity: 0; /* Start hidden */
+    transition: opacity 0.3s ease-in;
 }
 
 /* About Me */

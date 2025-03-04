@@ -5,7 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const slideshowDescription = document.getElementById("slideshowDescription");
 
 
-    let currentIndex = 0;
+    // creates a random index from collection to pick a picture using math floor to round down
+    let currentIndex = Math.floor(Math.random() * collectionData.length);
 
     // null check
     if(!collectionData || collectionData.length ===0) {
@@ -17,13 +18,17 @@ document.addEventListener("DOMContentLoaded", function () {
     function updateSlideshow() {
         slideshowImage.src = collectionData[currentIndex].image;
         slideshowDescription.textContent = collectionData[currentIndex].description_nl;
+
+        slideshowImage.style.opacity = "1";
     }
 
+    // sets a random image
+    updateSlideshow();
+
+    // listener on picture click
     slideshowImage.addEventListener("click", function () {
         currentIndex = (currentIndex + 1) % collectionData.length; // cycle through images upon click
         updateSlideshow();
     });
-
-    updateSlideshow();
 });
 

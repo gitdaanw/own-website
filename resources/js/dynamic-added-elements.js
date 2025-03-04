@@ -17,7 +17,7 @@ async function loadHeaderAndFooter() {
     updateNavbar();
 }
 
-// DOMContentLoaded event waits for page to be parsed and the fires below loadComponent function
+// DOMContentLoaded event waits for page to be parsed and the fires below loadHeaderAndFooter function
 // async function tells javascript there are asynchronous operations allows to use await
 
 document.addEventListener("DOMContentLoaded", loadHeaderAndFooter);
