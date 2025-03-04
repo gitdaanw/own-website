@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // create an array (map) of all categories using Set to remove duplicates
         // Add all as a category top of the list
         // => for each item returns category_nl from json
-        const categories = ["all", ...new Set(collectionData.map(item => item.category_nl))];
+        const categories = ["Alles", ...new Set(collectionData.map(item => item.category_nl))];
 
         categoryFilter.innerHTML = categories
             .map(category => `<option value="${category}">${category}</option>`)
@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function applyFilterAndSort() {
         const selectedCategory = categoryFilter.value;
         // ...collectionData creates a copy of the list, prevents me from modifying the original list
-        filteredData = selectedCategory === "all" ? [...collectionData] : collectionData.filter(item => item.category_nl === selectedCategory);
+        filteredData = selectedCategory === "Alles" ? [...collectionData] : collectionData.filter(item => item.category_nl === selectedCategory);
 
         currentPage = 1;    // reset to first page when filter is applied
 
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function filterCollectionByCategory(category) {
-        return category === "all" ? [...collectionData] : collectionData.filter(item => item.category_nl === category);
+        return category === "Alles" ? [...collectionData] : collectionData.filter(item => item.category_nl === category);
     }
 
     // function to render the collected data
@@ -157,9 +157,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const selectedValue = picturesPerPageFilter.value;
 
         picturesPerPage = selectedValue === "all" ? filteredData.length : parseInt(selectedValue, 10);
-        currentPage = 1; // Reset to first page
-        renderCollection(); // Re-render the collection
-        updateNavigationControls(); // Update the navigation
+        currentPage = 1; // reset to first page
+        renderCollection(); // re-render the collection
+        updateNavigationControls(); // update the navigation based on picture per page
     }
 
     // lightbox related

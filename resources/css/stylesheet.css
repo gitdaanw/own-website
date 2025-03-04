@@ -24,7 +24,7 @@ https://coolors.co/palette/e3f2fd-bbdefb-90caf9-64b5f6-42a5f5-2196f3-1e88e5-1976
 
 h3 {
     font-size: xx-large;
-    font-weight: bolder;
+    margin: 40px auto 30px auto;
 }
 
 a {
@@ -440,9 +440,14 @@ footer .legal {
 }
 
 /* SMALL SCREENS MOBILE */
-@media (max-width: 600px) {
+@media (max-width: 870px) {
     body {
         padding-top: 30px;
+    }
+
+    h3 {
+        font-size: xx-large;
+        margin: 50px auto 30px auto;
     }
 
     .header-navbar {
@@ -503,7 +508,7 @@ footer .legal {
         cursor: pointer;
         padding: 10px;
         color: #0D47A1;
-        margin-right: 20px;
+        margin-right: 30px;
     }
 
     .lightbox img {
@@ -526,4 +531,6 @@ footer .legal {
     .login-container {
         margin-top: 60px;
     }
+
+    
 }

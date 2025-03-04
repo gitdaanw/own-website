@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if(user) {
             alert("Login Succesvol!")
             localStorage.setItem("loggedInUser", username);
-            window.location.href= "add-pictures.html";
+            window.location.href= "index.html";
         } else {
             alert("Gebruikersnaam of password klopt niet");
             window.location.href = "login.html";

@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // save to local storage, this is only usable in demo as it is tempstorage
         localStorage.setItem("collectionData", JSON.stringify(storedData));
 
-        alert("Picture added successfully!");
+        alert("Foto Succesvol Toegevoegd!");
 
         // redirect to gallery page
         window.location.href = "pictures.html";
